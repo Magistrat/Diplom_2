@@ -14,28 +14,17 @@ import static com.storage.SettingsInterface.*;
 
 
 public class RegisterTest {
-    private String generatedTestEmail;
-    private String generatedTestPassword;
-    private String generatedTestName;
     private RegisterPositivePojo positiveRegister;
-
     private Response response;
 
     @Before
     public void setUp(){
         RestAssured.baseURI = BASE_URL;
 
-        generatedTestEmail = generateTestDataEmail();
-        generatedTestPassword = generateTestData("password");
-        generatedTestName = generateTestData("name");
-
         positiveRegister = new RegisterPositivePojo(
-//                generateTestDataEmail(),
-//                generateTestData("password"),
-//                generateTestData("name")
-                generatedTestEmail,
-                generatedTestPassword,
-                generatedTestName
+                generateTestDataEmail(),
+                generateTestData("password"),
+                generateTestData("name")
         );
     }
 
