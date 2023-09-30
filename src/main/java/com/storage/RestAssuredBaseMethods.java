@@ -24,4 +24,12 @@ public class RestAssuredBaseMethods {
         response.then().statusCode(statusCode);
     }
 
+    @Step
+    public static void deleteUserByBearerToken(String bearerToken){
+        given()
+                .header("Authorization", "Bearer " + bearerToken)
+                .header(CONTENT_TYPE, APPLICATION_JSON)
+                .when()
+                .delete(DELETE_USER_URL);
+    }
 }
