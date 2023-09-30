@@ -6,7 +6,7 @@ import io.restassured.response.Response;
 import static com.storage.SettingsInterface.*;
 import static io.restassured.RestAssured.given;
 
-public class RestAssuredMethods {
+public class RestAssuredBaseMethods {
     // Методы для работы с RestAssured
 
     @Step("Отправка запроса на API методом POST")
