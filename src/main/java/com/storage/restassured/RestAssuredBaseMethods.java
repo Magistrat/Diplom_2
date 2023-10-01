@@ -39,6 +39,14 @@ public abstract class RestAssuredBaseMethods {
                 .get(url);
     }
 
+    @Step("Отправка запроса на API методом GET без тела, но с авторизацией")
+    public static Response sendByGetWithToken(String url, String bearerToken){
+        return given()
+                .header("Authorization", bearerToken)
+                .when()
+                .get(url);
+    }
+
     @Step("Отправка запроса на API методом PATCH с телом (без авторизаци)")
     public static Response sendByPatch(String url, Object body){
         return given()

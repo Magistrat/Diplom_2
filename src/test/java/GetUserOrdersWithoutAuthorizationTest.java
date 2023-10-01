@@ -6,9 +6,8 @@ import org.junit.Test;
 
 import static com.storage.SettingsInterface.*;
 import static com.storage.restassured.GetUserOrders.*;
-import static com.storage.restassured.LoginApiMethods.checkBodyAfterNegativeLogin;
 
-public class GetUserOrdersWithoutAuthorization {
+public class GetUserOrdersWithoutAuthorizationTest {
     @Before
     public void setUp(){
         RestAssured.baseURI = BASE_URL;
