@@ -1,5 +1,6 @@
 package com.storage.restassured;
 
+import com.storage.pojo.register.positive.RegisterPositiveResponseAllPojo;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
@@ -12,5 +13,10 @@ public class RegisterApiMethods extends RestAssuredBaseMethods{
         checkResponseBodyJson(response, "user.name", userName);
         checkResponseBodyJsonNotNullKey(response, "accessToken");
         checkResponseBodyJsonNotNullKey(response, "refreshToken");
+    }
+
+    @Step("Полчучение ответа из тела после регистрации пользователя (в виде POJO)")
+    public static RegisterPositiveResponseAllPojo getPojoFromResponsePositiveRegisterUser(Response response){
+        return response.as(RegisterPositiveResponseAllPojo.class);
     }
 }
