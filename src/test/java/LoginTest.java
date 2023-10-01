@@ -1,6 +1,7 @@
 import com.storage.pojo.login.positive.LoginPositiveRequestPojo;
 import com.storage.pojo.register.positive.RegisterPositiveRequestPojo;
 import com.storage.pojo.register.positive.RegisterPositiveResponseAllPojo;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.After;
@@ -40,6 +41,7 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Логин под существующим пользователем")
     public void positiveLogin(){
         LoginPositiveRequestPojo pojoJsonForLogin = new LoginPositiveRequestPojo(
                 generatedTestEmail,
@@ -52,27 +54,29 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Логин с неверным логином и паролем")
     public void negativeLoginWrongPassword(){
         LoginPositiveRequestPojo pojoJsonForLogin = new LoginPositiveRequestPojo(
                 generatedTestEmail,
-                "123" + generatedTestPassword
+                "Wrong_password"
         );
 
-        Response responseWithLoginUser = sendByPost(LOGIN_USER_URL, pojoJsonForLogin);
-        checkResponseStatusCode(responseWithLoginUser, UNAUTHORIZED_STATUS_CODE);
-        checkBodyAfterNegativeLogin(responseWithLoginUser);
+        Response responseWithUnLoginUser = sendByPost(LOGIN_USER_URL, pojoJsonForLogin);
+        checkResponseStatusCode(responseWithUnLoginUser, UNAUTHORIZED_STATUS_CODE);
+        checkBodyAfterNegativeLogin(responseWithUnLoginUser);
     }
 
     @Test
+    @DisplayName("Логин с неверным логином и паролем")
     public void negativeLoginWrongEmail(){
         LoginPositiveRequestPojo pojoJsonForLogin = new LoginPositiveRequestPojo(
-                "123" + generatedTestEmail,
+                "wrong-email-839908424023@yandex.ru",
                 generatedTestPassword
         );
 
-        Response responseWithLoginUser = sendByPost(LOGIN_USER_URL, pojoJsonForLogin);
-        checkResponseStatusCode(responseWithLoginUser, UNAUTHORIZED_STATUS_CODE);
-        checkBodyAfterNegativeLogin(responseWithLoginUser);
+        Response responseWithUnLoginUser = sendByPost(LOGIN_USER_URL, pojoJsonForLogin);
+        checkResponseStatusCode(responseWithUnLoginUser, UNAUTHORIZED_STATUS_CODE);
+        checkBodyAfterNegativeLogin(responseWithUnLoginUser);
     }
 
 
