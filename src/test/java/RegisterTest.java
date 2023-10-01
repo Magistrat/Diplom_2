@@ -8,8 +8,7 @@ import org.junit.Test;
 
 import static com.storage.GenerationData.generateTestData;
 import static com.storage.GenerationData.generateTestDataEmail;
-import static com.storage.RestAssuredBaseMethods.checkResponseStatusCode;
-import static com.storage.RestAssuredBaseMethods.sendByPost;
+import static com.storage.restassured.RegisterApiMethods.*;
 import static com.storage.SettingsInterface.*;
 
 
@@ -31,8 +30,7 @@ public class RegisterTest {
     @Test
     @DisplayName("Создать уникального пользователя")
     public void createUniqueUserTest(){
-
-        Response response = sendByPost(REGISTER_USER_URL, positiveRegister);
+        response = sendByPost(REGISTER_USER_URL, positiveRegister);
         checkResponseStatusCode(response, SUCCESS_STATUS_CODE);
     }
 
