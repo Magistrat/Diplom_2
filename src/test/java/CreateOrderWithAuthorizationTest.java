@@ -60,6 +60,18 @@ public class CreateOrderWithAuthorizationTest {
         checkSuccessfulCreatedOrder(responseWithOrderCreated, generatedTestEmail, generatedTestName);
     }
 
+    @Test
+    @DisplayName("Создание заказа (с ингредиентами)")
+    public void createPositiveOrderWithIngredients(){
+        CreateOrderPositiveRequestPojo pojoJsonWithOrderIngredients = new CreateOrderPositiveRequestPojo(
+                getRandomIngredients(listOfAllIngredientsId, 4)
+        );
+
+        Response responseWithOrderCreated = sendByPostWithToken(CREATE_ORDER_URL, pojoJsonWithOrderIngredients, loginAccessToken);
+        checkResponseStatusCode(responseWithOrderCreated, SUCCESS_STATUS_CODE);
+        checkSuccessfulCreatedOrder(responseWithOrderCreated, generatedTestEmail, generatedTestName);
+    }
+
     @After
     public void deleteUser(){
         // Удаления пользователя
