@@ -1,5 +1,7 @@
 import com.storage.pojo.register.positive.RegisterPositiveRequestPojo;
-import com.storage.pojo.update.positive.*;
+import com.storage.pojo.update.ChangeUserDataPositiveRequestWithEmailPojo;
+import com.storage.pojo.update.ChangeUserDataPositiveRequestWithNamePojo;
+import com.storage.pojo.update.ChangeUserDataPositiveRequestWithPasswordPojo;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;

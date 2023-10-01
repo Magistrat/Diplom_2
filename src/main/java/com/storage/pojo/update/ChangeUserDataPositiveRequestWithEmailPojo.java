@@ -1,4 +1,4 @@
-package com.storage.pojo.update.positive;
+package com.storage.pojo.update;
 
 public class ChangeUserDataPositiveRequestWithEmailPojo{
     // Pojo для обновление данных авторизованного пользователя (отправка JSON). Обновление email
