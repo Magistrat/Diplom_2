@@ -13,6 +13,8 @@ import static com.storage.SettingsInterface.*;
 
 
 public class RegisterTest {
+    private String generatedTestEmail;
+    private String generatedTestName;
     private RegisterPositivePojo positiveRegister;
     private Response response;
 
@@ -20,10 +22,13 @@ public class RegisterTest {
     public void setUp(){
         RestAssured.baseURI = BASE_URL;
 
+        generatedTestEmail = generateTestDataEmail();
+        generatedTestName = generateTestData("name");
+
         positiveRegister = new RegisterPositivePojo(
-                generateTestDataEmail(),
+                generatedTestEmail,
                 generateTestData("password"),
-                generateTestData("name")
+                generatedTestName
         );
     }
 
@@ -32,6 +37,7 @@ public class RegisterTest {
     public void createUniqueUserTest(){
         response = sendByPost(REGISTER_USER_URL, positiveRegister);
         checkResponseStatusCode(response, SUCCESS_STATUS_CODE);
+        checkBodyAfterSuccessfulRegister(response, generatedTestEmail, generatedTestName);
     }
 
     @After
