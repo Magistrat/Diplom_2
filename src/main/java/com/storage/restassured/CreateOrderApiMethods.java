@@ -26,4 +26,10 @@ public class CreateOrderApiMethods extends RestAssuredBaseMethods{
         checkResponseBodyJson(response,"success", false);
         checkResponseBodyJson(response,"message", "Ingredient ids must be provided");
     }
+
+    public static void checkNegativeCreatedOrderWithoutAuthorization(Response response){
+        checkResponseBodyJson(response,"success", true);
+        checkResponseBodyJsonNotNullKey(response,"name");
+        checkResponseBodyJsonNotNullKey(response,"order.number");
+    }
 }

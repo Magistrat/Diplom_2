@@ -65,7 +65,7 @@ public class CreateOrderWithAuthorizationTest {
     @DisplayName("Создание заказа (с ингредиентами)")
     public void createPositiveOrderWithIngredients(){
         CreateOrderPositiveRequestPojo pojoJsonWithOrderIngredients = new CreateOrderPositiveRequestPojo(
-                getRandomIngredients(listOfAllIngredientsId, 4)
+                getRandomIngredients(listOfAllIngredientsId, 5)
         );
 
         Response responseWithOrderCreated = sendByPostWithToken(CREATE_ORDER_URL, pojoJsonWithOrderIngredients, loginAccessToken);
@@ -75,7 +75,7 @@ public class CreateOrderWithAuthorizationTest {
 
     @Test
     @DisplayName("Создание заказа (без ингредиентов)")
-    public void createPositiveOrderWithoutIngredients(){
+    public void negativeCreateOrderWithoutIngredients(){
         CreateOrderPositiveRequestPojo pojoJsonWithOrderIngredients = new CreateOrderPositiveRequestPojo(
                 new ArrayList<>()
         );
@@ -87,7 +87,7 @@ public class CreateOrderWithAuthorizationTest {
 
     @Test
     @DisplayName("Создание заказа (с неверным хешем ингредиентов)")
-    public void createPositiveOrderWithWrongIngredients(){
+    public void negativeCreateOrderWithWrongIngredients(){
         List<String> listIngredients= new ArrayList<>();
         listIngredients.add("Wrong_Ingredients");
 
