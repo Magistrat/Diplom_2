@@ -14,4 +14,8 @@ public class GenerationData {
         return generateTestData("email") + "@yandex.ru";
     }
 
+    @Step("Получение новых данных на основе уже сгенерированных")
+    public static String newTestData(String endData){
+        return "new-" + endData;
+    }
 }
