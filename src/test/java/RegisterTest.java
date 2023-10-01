@@ -44,7 +44,7 @@ public class RegisterTest {
 
     @Test
     @DisplayName("Создать пользователя, который уже зарегистрирован")
-    public void tryCreateAlredyExistUserTest(){
+    public void negativeTryCreateAlreadyExistUserTest(){
         response = sendByPost(REGISTER_USER_URL, positiveRegister);
         Response responseExitUser = sendByPost(REGISTER_USER_URL, positiveRegister);
 
