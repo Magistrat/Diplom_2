@@ -1,5 +1,6 @@
 package com.storage.restassured;
 
+import com.storage.pojo.login.positive.LoginPositiveResponseAllPojo;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
@@ -18,6 +19,11 @@ public class LoginApiMethods extends RestAssuredBaseMethods{
     public static void checkBodyAfterNegativeLogin(Response response){
         checkResponseBodyJson(response, "success", false);
         checkResponseBodyJson(response, "message", "email or password are incorrect");
+    }
+
+    @Step("Полчучение ответа из тела после авторизации пользователя (в виде POJO)")
+    public static LoginPositiveResponseAllPojo getPojoFromResponsePositiveLoginUser(Response response){
+        return response.as(LoginPositiveResponseAllPojo.class);
     }
 
 }
