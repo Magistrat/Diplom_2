@@ -11,7 +11,7 @@ import static org.hamcrest.Matchers.notNullValue;
 public abstract class RestAssuredBaseMethods {
     // Базовый абстрактный класс для работы с RestAssured
 
-    @Step("Отправка запроса на API методом POST")
+    @Step("Отправка запроса на API методом POST с телом (без авторизаци)")
     public static Response sendByPost(String url, Object body){
         return given()
                 .header(CONTENT_TYPE, APPLICATION_JSON)
@@ -21,9 +21,27 @@ public abstract class RestAssuredBaseMethods {
                 .post(url);
     }
 
-    @Step("Отправка запроса на API методом PATCH")
+    @Step("Отправка запроса на API методом GET без тела и авторизаци")
+    public static Response sendByGet(String url){
+        return given()
+                .when()
+                .get(url);
+    }
+
+    @Step("Отправка запроса на API методом PATCH с телом (без авторизаци)")
     public static Response sendByPatch(String url, Object body){
         return given()
+                .header(CONTENT_TYPE, APPLICATION_JSON)
+                .and()
+                .body(body)
+                .when()
+                .patch(url);
+    }
+
+    @Step("Отправка запроса на API методом PATCH с телом и Bearer Token")
+    public static Response sendByPatchWithToken(String url, Object body, String bearerToken){
+        return given()
+                .header("Authorization", bearerToken)
                 .header(CONTENT_TYPE, APPLICATION_JSON)
                 .and()
                 .body(body)
