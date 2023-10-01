@@ -11,8 +11,4 @@ public class RegisterPositiveResponseAllPojo {
     public String getAccessToken() {
         return accessToken;
     }
-
-    public String getRefreshToken() {
-        return refreshToken;
-    }
 }

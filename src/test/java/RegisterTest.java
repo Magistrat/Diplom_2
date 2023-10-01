@@ -1,4 +1,5 @@
 import com.storage.pojo.register.positive.RegisterPositiveRequestPojo;
+import com.storage.pojo.register.positive.RegisterPositiveResponseAllPojo;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -42,6 +43,7 @@ public class RegisterTest {
 
     @After
     public void deleteUser(){
-        System.out.println();
+        RegisterPositiveResponseAllPojo pojo = getPojoFromResponsePositiveRegisterUser(response);
+        deleteUserByBearerToken(pojo.getAccessToken());
     }
 }
