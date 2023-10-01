@@ -7,6 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.storage.GenerationData.generateTestData;
@@ -70,6 +71,18 @@ public class CreateOrderWithAuthorizationTest {
         Response responseWithOrderCreated = sendByPostWithToken(CREATE_ORDER_URL, pojoJsonWithOrderIngredients, loginAccessToken);
         checkResponseStatusCode(responseWithOrderCreated, SUCCESS_STATUS_CODE);
         checkSuccessfulCreatedOrder(responseWithOrderCreated, generatedTestEmail, generatedTestName);
+    }
+
+    @Test
+    @DisplayName("Создание заказа (без ингредиентов)")
+    public void createPositiveOrderWithoutIngredients(){
+        CreateOrderPositiveRequestPojo pojoJsonWithOrderIngredients = new CreateOrderPositiveRequestPojo(
+                new ArrayList<>()
+        );
+
+        Response responseWithOrderCreated = sendByPostWithToken(CREATE_ORDER_URL, pojoJsonWithOrderIngredients, loginAccessToken);
+        checkResponseStatusCode(responseWithOrderCreated, BAD_REQUEST_STATUS_CODE);
+        checkNegativeCreatedOrderWithoutIngredients(responseWithOrderCreated);
     }
 
     @After
