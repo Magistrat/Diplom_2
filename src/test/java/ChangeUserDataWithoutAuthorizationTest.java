@@ -64,7 +64,7 @@ public class ChangeUserDataWithoutAuthorizationTest {
 
     @After
     public void deleteUser(){
-        // Удаления пользователя
+        // Удаление пользователя
         deleteUserByBearerToken(loginAccessToken);
     }
 }

@@ -82,7 +82,7 @@ public class ChangeUserDataWithAuthorizationTest {
 
     @After
     public void deleteUser(){
-        // Удаления пользователя
+        // Удаление пользователя
         deleteUserByBearerToken(loginAccessToken);
     }
 }

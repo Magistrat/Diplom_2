@@ -79,9 +79,7 @@ public class LoginTest {
 
     @After
     public void deleteUser(){
-        // Удаления пользователя
-
-        RegisterPositiveResponseAllPojo pojo = getPojoFromResponsePositiveRegisterUser(responseWithCreatedUser);
-        deleteUserByBearerToken(pojo.getAccessToken());
+        // Удаление пользователя
+        deleteUserByBearerToken(getPojoFromResponsePositiveRegisterUser(responseWithCreatedUser).getAccessToken());
     }
 }
