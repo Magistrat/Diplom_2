@@ -3,9 +3,12 @@ package com.storage.restassured;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
+import java.util.List;
+
 import static com.storage.SettingsInterface.*;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.notNullValue;
 
 public abstract class RestAssuredBaseMethods {
@@ -91,6 +94,12 @@ public abstract class RestAssuredBaseMethods {
     public static void checkResponseBodyJson(Response response, String jsonKey, boolean jsonValue){
         response.then().assertThat().body(jsonKey, equalTo(jsonValue));
     }
+
+    @Step("Проверка наличия в ответе от API нужного ключа со значением")
+    public static void checkResponseBodyJson(Response response, String jsonKey, List<String> jsonValue){
+        response.then().assertThat().body(jsonKey, hasItems(jsonValue));
+    }
+
     @Step("Проверка наличия в ответе от API, что значение ключа является строкой")
     public static void checkResponseBodyJsonNotNullKey(Response response, String jsonKey){
         response.then().assertThat().body(jsonKey, notNullValue());

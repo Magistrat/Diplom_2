@@ -16,6 +16,7 @@ public class GetUserOrders extends RestAssuredBaseMethods{
     @Step("Проверка тела ответа после получения заказов у аторизованного пользователя")
     public static void checkBodyAfterPositiveGetUserOrders(Response response, List<String> ingredients){
         checkResponseBodyJson(response, "success", true);
+        checkResponseBodyJson(response, "orders.ingredients", ingredients);
         checkResponseBodyJsonNotNullKey(response, "total");
         checkResponseBodyJsonNotNullKey(response, "totalToday");
     }
