@@ -2,6 +2,7 @@ package com.storage.restassured;
 
 import com.storage.pojo.ingredients.IngredientsResponseAll;
 import com.storage.pojo.ingredients.IngredientsResponseData;
+import io.qameta.allure.Step;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,10 +12,12 @@ import static com.storage.SettingsInterface.ALL_INGREDIENTS_URL;
 
 public class IngredientsApiMethods extends RestAssuredBaseMethods{
 
+    @Step("Получение Pojo со всеми ингридиентами заказа из API")
     public static IngredientsResponseAll getAllIngredientsPojo(){
         return sendByGet(ALL_INGREDIENTS_URL).as(IngredientsResponseAll.class);
     }
 
+    @Step("Получение списка всех хешей ингридиентов")
     public static List<String> getLisiOfIngredientsId(){
         List<String> listOfAllId = new ArrayList<>();
 
@@ -25,6 +28,7 @@ public class IngredientsApiMethods extends RestAssuredBaseMethods{
         return listOfAllId;
     }
 
+    @Step("Получение одного рандомного хеша ингридиента")
     public static List<String> getRandomOneIngredient() {
         List<String> listOfAllId = getLisiOfIngredientsId();
         List<String> randomOneIngredient = new ArrayList<>();
@@ -34,6 +38,7 @@ public class IngredientsApiMethods extends RestAssuredBaseMethods{
         return randomOneIngredient;
     }
 
+    @Step("Получение несколиких рандомных хешей ингридиентов")
     public static List<String> getRandomIngredients(int count){
         List<String> listOfAllId = getLisiOfIngredientsId();
 
