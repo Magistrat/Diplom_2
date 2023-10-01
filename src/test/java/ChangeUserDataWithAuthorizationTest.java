@@ -49,7 +49,7 @@ public class ChangeUserDataWithAuthorizationTest {
                 newTestData(generatedTestEmail)
         );
 
-        Response responseWithUpdatedUser = sendByPatch(UPDATE_USER_URL, pojoJsonData, loginAccessToken);
+        Response responseWithUpdatedUser = sendByPatchWithToken(UPDATE_USER_URL, pojoJsonData, loginAccessToken);
         checkResponseStatusCode(responseWithUpdatedUser, SUCCESS_STATUS_CODE);
         checkSuccessfulUpdatedUsersData(responseWithUpdatedUser, newTestData(generatedTestEmail), generatedTestName);
     }
@@ -61,7 +61,7 @@ public class ChangeUserDataWithAuthorizationTest {
                 newTestData(generatedTestPassword)
         );
 
-        Response responseWithUpdatedUser = sendByPatch(UPDATE_USER_URL, pojoJsonData, loginAccessToken);
+        Response responseWithUpdatedUser = sendByPatchWithToken(UPDATE_USER_URL, pojoJsonData, loginAccessToken);
         checkResponseStatusCode(responseWithUpdatedUser, SUCCESS_STATUS_CODE);
         checkSuccessfulUpdatedUsersData(responseWithUpdatedUser, generatedTestEmail, generatedTestName);
     }
@@ -73,7 +73,7 @@ public class ChangeUserDataWithAuthorizationTest {
                 newTestData(generatedTestName)
         );
 
-        Response responseWithUpdatedUser = sendByPatch(UPDATE_USER_URL, pojoJsonData, loginAccessToken);
+        Response responseWithUpdatedUser = sendByPatchWithToken(UPDATE_USER_URL, pojoJsonData, loginAccessToken);
         checkResponseStatusCode(responseWithUpdatedUser, SUCCESS_STATUS_CODE);
         checkSuccessfulUpdatedUsersData(responseWithUpdatedUser, generatedTestEmail, newTestData(generatedTestName));
     }

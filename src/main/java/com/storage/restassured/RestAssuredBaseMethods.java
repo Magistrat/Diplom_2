@@ -22,9 +22,8 @@ public abstract class RestAssuredBaseMethods {
     }
 
     @Step("Отправка запроса на API методом PATCH")
-    public static Response sendByPatch(String url, Object body, String bearerToken){
+    public static Response sendByPatch(String url, Object body){
         return given()
-                .header("Authorization", bearerToken)
                 .header(CONTENT_TYPE, APPLICATION_JSON)
                 .and()
                 .body(body)
