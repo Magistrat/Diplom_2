@@ -25,7 +25,6 @@ public class LoginTest {
     @Before
     public void setUp(){
         // Генерация тестовых данных, создание пользователя
-
         RestAssured.baseURI = BASE_URL;
 
         generatedTestEmail = generateTestDataEmail();

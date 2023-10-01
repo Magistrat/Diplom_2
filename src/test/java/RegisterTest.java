@@ -22,7 +22,6 @@ public class RegisterTest {
     @Before
     public void setUp(){
         // Генерация тестовых данных
-
         RestAssured.baseURI = BASE_URL;
 
         generatedTestEmail = generateTestDataEmail();

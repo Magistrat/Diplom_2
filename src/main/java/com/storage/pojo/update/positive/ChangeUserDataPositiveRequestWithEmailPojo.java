@@ -1,6 +1,6 @@
 package com.storage.pojo.update.positive;
 
-public class ChangeUserDataPositiveRequestWithEmailPojo implements CommonGetterInterface{
+public class ChangeUserDataPositiveRequestWithEmailPojo{
     // Pojo для обновление данных авторизованного пользователя (отправка JSON). Обновление email
 
     private String email;
@@ -10,9 +10,4 @@ public class ChangeUserDataPositiveRequestWithEmailPojo implements CommonGetterI
     }
 
     public ChangeUserDataPositiveRequestWithEmailPojo() {}
-
-    @Override
-    public String getUpdateValue(){
-        return email;
-    }
 }
