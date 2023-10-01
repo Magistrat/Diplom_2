@@ -10,4 +10,7 @@ public class LoginPositiveResponseAllPojo {
     private String refreshToken;
     private LoginPositiveResponseUserPojo user;
 
+    public String getAccessToken() {
+        return accessToken;
+    }
 }
