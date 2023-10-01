@@ -12,7 +12,7 @@ import static com.storage.SettingsInterface.*;
 import static com.storage.restassured.RegisterApiMethods.getPojoFromResponsePositiveRegisterUser;
 import static com.storage.restassured.LoginApiMethods.*;
 
-public class LoginPositiveTest {
+public class LoginTest {
 
     private String generatedTestEmail;
     private String generatedTestPassword;
@@ -50,6 +50,31 @@ public class LoginPositiveTest {
         checkResponseStatusCode(responseWithLoginUser, SUCCESS_STATUS_CODE);
         checkBodyAfterSuccessfulLogin(responseWithLoginUser, generatedTestEmail, generatedTestName);
     }
+
+    @Test
+    public void negativeLoginWrongPassword(){
+        LoginPositiveRequestPojo pojoJsonForLogin = new LoginPositiveRequestPojo(
+                generatedTestEmail,
+                "123" + generatedTestPassword
+        );
+
+        Response responseWithLoginUser = sendByPost(LOGIN_USER_URL, pojoJsonForLogin);
+        checkResponseStatusCode(responseWithLoginUser, UNAUTHORIZED_STATUS_CODE);
+        checkBodyAfterNegativeLogin(responseWithLoginUser);
+    }
+
+    @Test
+    public void negativeLoginWrongEmail(){
+        LoginPositiveRequestPojo pojoJsonForLogin = new LoginPositiveRequestPojo(
+                "123" + generatedTestEmail,
+                generatedTestPassword
+        );
+
+        Response responseWithLoginUser = sendByPost(LOGIN_USER_URL, pojoJsonForLogin);
+        checkResponseStatusCode(responseWithLoginUser, UNAUTHORIZED_STATUS_CODE);
+        checkBodyAfterNegativeLogin(responseWithLoginUser);
+    }
+
 
     @After
     public void deleteUser(){
