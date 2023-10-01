@@ -1,10 +1,12 @@
 package com.storage.restassured;
 
 
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
 public class CreateOrderApiMethods extends RestAssuredBaseMethods{
 
+    @Step("Проверка тела ответа после успешного создания заказа")
     public static void checkSuccessfulCreatedOrder(Response response, String userEmail, String userName){
         checkResponseBodyJson(response,"success", true);
         checkResponseBodyJsonNotNullKey(response,"name");
@@ -22,11 +24,13 @@ public class CreateOrderApiMethods extends RestAssuredBaseMethods{
         checkResponseBodyJsonNotNullKey(response,"order.price");
     }
 
+    @Step("Проверка тела ответа после негативного создания заказа (без ингредиентов в заказе)")
     public static void checkNegativeCreatedOrderWithoutIngredients(Response response){
         checkResponseBodyJson(response,"success", false);
         checkResponseBodyJson(response,"message", "Ingredient ids must be provided");
     }
 
+    @Step("Проверка тела ответа после негативного создания заказа (без авторизации)")
     public static void checkNegativeCreatedOrderWithoutAuthorization(Response response){
         checkResponseBodyJson(response,"success", true);
         checkResponseBodyJsonNotNullKey(response,"name");
