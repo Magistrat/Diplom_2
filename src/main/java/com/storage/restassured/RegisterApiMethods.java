@@ -10,5 +10,7 @@ public class RegisterApiMethods extends RestAssuredBaseMethods{
         checkResponseBodyJson(response, "success", true);
         checkResponseBodyJson(response, "user.email", userEmail);
         checkResponseBodyJson(response, "user.name", userName);
+        checkResponseBodyJsonNotNullKey(response, "accessToken");
+        checkResponseBodyJsonNotNullKey(response, "refreshToken");
     }
 }
