@@ -29,8 +29,7 @@ public class IngredientsApiMethods extends RestAssuredBaseMethods{
     }
 
     @Step("Получение одного рандомного хеша ингридиента")
-    public static List<String> getRandomOneIngredient() {
-        List<String> listOfAllId = getLisiOfIngredientsId();
+    public static List<String> getRandomOneIngredient(List<String> listOfAllId) {
         List<String> randomOneIngredient = new ArrayList<>();
 
         int randomIndex = new Random().nextInt(listOfAllId.size());
@@ -39,11 +38,9 @@ public class IngredientsApiMethods extends RestAssuredBaseMethods{
     }
 
     @Step("Получение несколиких рандомных хешей ингридиентов")
-    public static List<String> getRandomIngredients(int count){
-        List<String> listOfAllId = getLisiOfIngredientsId();
-
+    public static List<String> getRandomIngredients(List<String> listOfAllId, int count){
         if (listOfAllId.size() < count || listOfAllId.isEmpty() || count <= 0){
-            return getRandomOneIngredient();
+            return getRandomOneIngredient(listOfAllId);
         }
 
         List<String> randomIngredients = new ArrayList<>();
