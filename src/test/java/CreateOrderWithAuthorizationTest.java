@@ -85,6 +85,20 @@ public class CreateOrderWithAuthorizationTest {
         checkNegativeCreatedOrderWithoutIngredients(responseWithOrderCreated);
     }
 
+    @Test
+    @DisplayName("Создание заказа (с неверным хешем ингредиентов)")
+    public void createPositiveOrderWithWrongIngredients(){
+        List<String> listIngredients= new ArrayList<>();
+        listIngredients.add("Wrong_Ingredients");
+
+        CreateOrderPositiveRequestPojo pojoJsonWithOrderIngredients = new CreateOrderPositiveRequestPojo(
+                listIngredients
+        );
+
+        Response responseWithOrderCreated = sendByPostWithToken(CREATE_ORDER_URL, pojoJsonWithOrderIngredients, loginAccessToken);
+        checkResponseStatusCode(responseWithOrderCreated, INTERNAL_SERVER_ERROR_STATUS_CODE);
+    }
+
     @After
     public void deleteUser(){
         // Удаления пользователя

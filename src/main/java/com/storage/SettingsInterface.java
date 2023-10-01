@@ -17,4 +17,5 @@ public interface SettingsInterface {
     public static final int BAD_REQUEST_STATUS_CODE = 400;
     public static final int UNAUTHORIZED_STATUS_CODE = 401;
     public static final int FORBIDDEN_STATUS_CODE = 403;
+    public static final int INTERNAL_SERVER_ERROR_STATUS_CODE = 500;
 }
