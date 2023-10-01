@@ -1,4 +1,4 @@
-import com.storage.pojo.register.RegisterPositivePojo;
+import com.storage.pojo.register.positive.RegisterPositiveRequestPojo;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -15,7 +15,7 @@ import static com.storage.SettingsInterface.*;
 public class RegisterTest {
     private String generatedTestEmail;
     private String generatedTestName;
-    private RegisterPositivePojo positiveRegister;
+    private RegisterPositiveRequestPojo positiveRegister;
     private Response response;
 
     @Before
@@ -25,7 +25,7 @@ public class RegisterTest {
         generatedTestEmail = generateTestDataEmail();
         generatedTestName = generateTestData("name");
 
-        positiveRegister = new RegisterPositivePojo(
+        positiveRegister = new RegisterPositiveRequestPojo(
                 generatedTestEmail,
                 generateTestData("password"),
                 generatedTestName
