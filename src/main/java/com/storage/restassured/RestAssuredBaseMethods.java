@@ -21,6 +21,16 @@ public abstract class RestAssuredBaseMethods {
                 .post(url);
     }
 
+    @Step("Отправка запроса на API методом PATCH")
+    public static Response sendByPatch(String url, Object body){
+        return given()
+                .header(CONTENT_TYPE, APPLICATION_JSON)
+                .and()
+                .body(body)
+                .when()
+                .patch(url);
+    }
+
     @Step("Удаление пользователя при помощи Bearer Token")
     public static void deleteUserByBearerToken(String bearerToken){
         given()
