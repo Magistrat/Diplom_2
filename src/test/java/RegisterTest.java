@@ -37,9 +37,21 @@ public class RegisterTest {
     @DisplayName("Создать уникального пользователя")
     public void createUniqueUserTest(){
         response = sendByPost(REGISTER_USER_URL, positiveRegister);
+
         checkResponseStatusCode(response, SUCCESS_STATUS_CODE);
         checkBodyAfterSuccessfulRegister(response, generatedTestEmail, generatedTestName);
     }
+
+    @Test
+    @DisplayName("Создать пользователя, который уже зарегистрирован")
+    public void tryCreateAlredyExistUserTest(){
+        response = sendByPost(REGISTER_USER_URL, positiveRegister);
+        Response responseExitUser = sendByPost(REGISTER_USER_URL, positiveRegister);
+
+        checkResponseStatusCode(responseExitUser, FORBIDDEN_STATUS_CODE);
+        checkBodyUserAlreadyExist(responseExitUser);
+    }
+
 
     @After
     public void deleteUser(){

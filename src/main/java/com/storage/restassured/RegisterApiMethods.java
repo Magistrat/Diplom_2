@@ -15,6 +15,13 @@ public class RegisterApiMethods extends RestAssuredBaseMethods{
         checkResponseBodyJsonNotNullKey(response, "refreshToken");
     }
 
+    @Step("Проверка тела ответа если пользователь уже существует")
+    public static void checkBodyUserAlreadyExist(Response response){
+        checkResponseBodyJson(response, "success", false);
+        checkResponseBodyJson(response, "message", "User already exists");
+    }
+
+
     @Step("Полчучение ответа из тела после регистрации пользователя (в виде POJO)")
     public static RegisterPositiveResponseAllPojo getPojoFromResponsePositiveRegisterUser(Response response){
         return response.as(RegisterPositiveResponseAllPojo.class);

@@ -10,4 +10,5 @@ public interface SettingsInterface {
     public static final String APPLICATION_JSON = "application/json";
 
     public static final int SUCCESS_STATUS_CODE = 200;
+    public static final int FORBIDDEN_STATUS_CODE = 403;
 }
