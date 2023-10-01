@@ -8,7 +8,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.storage.GenerationData.*;
+import static com.storage.GenerationData.generateTestData;
+import static com.storage.GenerationData.generateTestDataEmail;
 import static com.storage.SettingsInterface.*;
 import static com.storage.restassured.RegisterApiMethods.getPojoFromResponsePositiveRegisterUser;
 import static com.storage.restassured.LoginApiMethods.*;
@@ -31,13 +32,10 @@ public class LoginTest {
         generatedTestPassword = generateTestData("password");
         generatedTestName = generateTestData("name");
 
-        RegisterPositiveRequestPojo positiveRegister = new RegisterPositiveRequestPojo(
-                generatedTestEmail,
-                generatedTestPassword,
-                generatedTestName
+        responseWithCreatedUser = sendByPost(
+                REGISTER_USER_URL,
+                new RegisterPositiveRequestPojo(generatedTestEmail, generatedTestPassword, generatedTestName)
         );
-
-        responseWithCreatedUser = sendByPost(REGISTER_USER_URL, positiveRegister);
     }
 
     @Test

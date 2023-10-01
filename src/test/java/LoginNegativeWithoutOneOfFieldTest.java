@@ -8,7 +8,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import static com.storage.GenerationData.*;
+import static com.storage.GenerationData.generateTestData;
+import static com.storage.GenerationData.generateTestDataEmail;
 import static com.storage.SettingsInterface.*;
 import static com.storage.restassured.LoginApiMethods.*;
 
