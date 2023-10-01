@@ -7,6 +7,7 @@ public interface SettingsInterface {
     public static final String DELETE_USER_URL = "/api/auth/register";
     public static final String LOGIN_USER_URL = "/api/auth/login";
     public static final String UPDATE_USER_URL = "/api/auth/user";
+    public static final String ALL_INGREDIENTS_URL = "/api/ingredients";
 
     public static final String CONTENT_TYPE = "Content-Type";
     public static final String APPLICATION_JSON = "application/json";

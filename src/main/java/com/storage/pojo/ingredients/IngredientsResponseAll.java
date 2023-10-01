@@ -14,4 +14,8 @@ public class IngredientsResponseAll {
     }
 
     public IngredientsResponseAll() {}
+
+    public List<IngredientsResponseData> getData() {
+        return data;
+    }
 }

@@ -32,4 +32,8 @@ public class IngredientsResponseData {
     }
 
     public IngredientsResponseData() {}
+
+    public String getId() {
+        return _id;
+    }
 }

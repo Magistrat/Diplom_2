@@ -8,7 +8,7 @@ import static com.storage.GenerationData.generateTestData;
 import static com.storage.GenerationData.generateTestDataEmail;
 import static com.storage.SettingsInterface.*;
 import static com.storage.restassured.RegisterApiMethods.getPojoFromResponsePositiveRegisterUser;
-import static com.storage.restassured.CreateOrderMethods.*;
+import static com.storage.restassured.CreateOrderApiMethods.*;
 
 public class CreateOrderTest {
     private String loginAccessToken;
