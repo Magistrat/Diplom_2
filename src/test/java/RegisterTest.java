@@ -17,10 +17,12 @@ public class RegisterTest {
     private String generatedTestEmail;
     private String generatedTestName;
     private RegisterPositiveRequestPojo positiveRegister;
-    private Response response;
+    private Response responseWithCreatedUser;
 
     @Before
     public void setUp(){
+        // Генерация тестовых данных
+
         RestAssured.baseURI = BASE_URL;
 
         generatedTestEmail = generateTestDataEmail();
@@ -36,16 +38,16 @@ public class RegisterTest {
     @Test
     @DisplayName("Создать уникального пользователя")
     public void createUniqueUserTest(){
-        response = sendByPost(REGISTER_USER_URL, positiveRegister);
+        responseWithCreatedUser = sendByPost(REGISTER_USER_URL, positiveRegister);
 
-        checkResponseStatusCode(response, SUCCESS_STATUS_CODE);
-        checkBodyAfterSuccessfulRegister(response, generatedTestEmail, generatedTestName);
+        checkResponseStatusCode(responseWithCreatedUser, SUCCESS_STATUS_CODE);
+        checkBodyAfterSuccessfulRegister(responseWithCreatedUser, generatedTestEmail, generatedTestName);
     }
 
     @Test
     @DisplayName("Создать пользователя, который уже зарегистрирован")
     public void negativeTryCreateAlreadyExistUserTest(){
-        response = sendByPost(REGISTER_USER_URL, positiveRegister);
+        responseWithCreatedUser = sendByPost(REGISTER_USER_URL, positiveRegister);
         Response responseExitUser = sendByPost(REGISTER_USER_URL, positiveRegister);
 
         checkResponseStatusCode(responseExitUser, FORBIDDEN_STATUS_CODE);
@@ -55,7 +57,9 @@ public class RegisterTest {
 
     @After
     public void deleteUser(){
-        RegisterPositiveResponseAllPojo pojo = getPojoFromResponsePositiveRegisterUser(response);
+        // Удаления пользователя
+
+        RegisterPositiveResponseAllPojo pojo = getPojoFromResponsePositiveRegisterUser(responseWithCreatedUser);
         deleteUserByBearerToken(pojo.getAccessToken());
     }
 }
